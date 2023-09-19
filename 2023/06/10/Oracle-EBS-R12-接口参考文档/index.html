@@ -1,0 +1,1585 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Oracle EBS R12 接口参考文档 | 互联网新贵邓醒</title><meta name="author" content="Xing Deng"><meta name="copyright" content="Xing Deng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="模块 应用场景 类型 API&#x2F;INTERFACE    AP 付款核销 API ap_pay_invoice_pkg.ap_pay_invoice   AP 应付发票审批 API ap_approval_pkg.approval   AP 预付款核销 API ap_prepay_pkg.apply_prepay_fr_prepay   AP 创建应付发票 API ap_import_invo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle EBS R12 接口参考文档">
+<meta property="og:url" content="http://dengliantong.cn/2023/06/10/Oracle-EBS-R12-%E6%8E%A5%E5%8F%A3%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="互联网新贵邓醒">
+<meta property="og:description" content="模块 应用场景 类型 API&#x2F;INTERFACE    AP 付款核销 API ap_pay_invoice_pkg.ap_pay_invoice   AP 应付发票审批 API ap_approval_pkg.approval   AP 预付款核销 API ap_prepay_pkg.apply_prepay_fr_prepay   AP 创建应付发票 API ap_import_invo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images3.alphacoders.com/103/103237.jpg">
+<meta property="article:published_time" content="2023-06-10T02:53:52.000Z">
+<meta property="article:modified_time" content="2023-06-10T06:25:46.367Z">
+<meta property="article:author" content="Xing Deng">
+<meta property="article:tag" content="EBS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images3.alphacoders.com/103/103237.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://dengliantong.cn/2023/06/10/Oracle-EBS-R12-%E6%8E%A5%E5%8F%A3%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Oracle EBS R12 接口参考文档',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-06-10 14:25:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images3.alphacoders.com/103/103237.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="互联网新贵邓醒"><span class="site-name">互联网新贵邓醒</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Oracle EBS R12 接口参考文档</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-10T02:53:52.000Z" title="发表于 2023-06-10 10:53:52">2023-06-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-10T06:25:46.367Z" title="更新于 2023-06-10 14:25:46">2023-06-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Oracle EBS R12 接口参考文档"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>应用场景</th>
+<th>类型</th>
+<th>API/INTERFACE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AP</td>
+<td>付款核销</td>
+<td>API</td>
+<td>ap_pay_invoice_pkg.ap_pay_invoice</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>应付发票审批</td>
+<td>API</td>
+<td>ap_approval_pkg.approval</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>预付款核销</td>
+<td>API</td>
+<td>ap_prepay_pkg.apply_prepay_fr_prepay</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>创建应付发票</td>
+<td>API</td>
+<td>ap_import_invoices_pkg.import_invoices</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>创建付款历史记录</td>
+<td>API</td>
+<td>ap_reconciliation_pkg.insert_payment_history</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>创建供应商头</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.create_vendor</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>验证供应商头</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.validate_vendor</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>更新供应商头</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.update_vendor</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>创建供应商地点</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.create_vendor_site</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>验证供应商地点</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.validate_vendor_site</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>更新供应商地点</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.update_vendor_site</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>创建供应商联系信息</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.create_vendor_contact</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>验证供应商联系信息</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.validate_vendor_contact</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>更新供应商联系信息</td>
+<td>API</td>
+<td>ap_vendor_pub_pkg.update_vendor_contact</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>创建Notes</td>
+<td>API</td>
+<td>ap_notes_pub.create_note</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>供应商导入</td>
+<td>INTERFACE</td>
+<td>AR.APXSUIMP</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>供应商地点导入</td>
+<td>INTERFACE</td>
+<td>AR.APXSSIMP</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>供应商地点联系人导入</td>
+<td>INTERFACE</td>
+<td>AR.APXSCIMP</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>应付发票导入</td>
+<td>INTERFACE</td>
+<td>AR.APXIIMPT</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>贷项通知单核销</td>
+<td>API</td>
+<td>ar_cm_api_pub.apply_on_account</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>收款核销</td>
+<td>API</td>
+<td>ar_receipt_api_pub.apply</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>收款撤销核销</td>
+<td>API</td>
+<td>ar_receipt_api_pub.unapply</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>应收发票导入</td>
+<td>INTERFACE</td>
+<td>AR.RAXTRX</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建应收发票</td>
+<td>API</td>
+<td>ar_invoice_api_pub.create_single_invoice</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建应收收款</td>
+<td>API</td>
+<td>AR_RECEIPT_API_PUB.create_cash</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户联系人</td>
+<td>API</td>
+<td>hz_contact_point_v2pub.create_phone_contact_point</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>格式化地址信息</td>
+<td>API</td>
+<td>ARP_ADDR_PKG.FORMAT_ADDRESS</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户</td>
+<td>API</td>
+<td>hz_party_v2pub.create_organization</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新客户</td>
+<td>API</td>
+<td>hz_party_v2pub.update_organization</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户地址</td>
+<td>API</td>
+<td>hz_location_v2pub.create_location</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新客户地址</td>
+<td>API</td>
+<td>hz_location_v2pub.update_location</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建party_site</td>
+<td>API</td>
+<td>hz_party_site_v2pub.create_party_site</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户地点</td>
+<td>API</td>
+<td>hz_cust_account_site_v2pub.create_cust_acct_site</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户地点的业务用途</td>
+<td>API</td>
+<td>hz_cust_account_site_v2pub.create_cust_site_use</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新客户地点的业务用途</td>
+<td>API</td>
+<td>hz_cust_account_site_v2pub.update_cust_site_use</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户配置文件</td>
+<td>API</td>
+<td>hz_customer_profile_v2pub.create_customer_profile</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户配置文件金额</td>
+<td>API</td>
+<td>hz_customer_profile_v2pub.create_cust_profile_amt</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新客户配置文件金额</td>
+<td>API</td>
+<td>hz_customer_profile_v2pub.update_cust_profile_amt</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户帐户</td>
+<td>API</td>
+<td>hz_cust_account_v2pub.create_cust_account</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新客户帐户</td>
+<td>API</td>
+<td>hz_cust_account_v2pub.update_cust_account</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户帐户关系</td>
+<td>API</td>
+<td>hz_cust_account_v2pub.create_cust_acct_relate</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新客户帐户关系</td>
+<td>API</td>
+<td>hz_cust_account_v2pub.update_cust_acct_relate</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户联系人</td>
+<td>API</td>
+<td>hz_party_v2pub.create_person</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新客户联系人</td>
+<td>API</td>
+<td>hz_party_v2pub.update_person</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户与联系人的关系</td>
+<td>API</td>
+<td>hz_relationship_v2pub.create_relationship_with_usg</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建客户帐户角色(用途)</td>
+<td>API</td>
+<td>hz_cust_account_role_v2pub.create_cust_account_role</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>创建联系方式</td>
+<td>API</td>
+<td>hz_contact_point_v2pub.create_contact_point</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>更新联系方式</td>
+<td>API</td>
+<td>hz_contact_point_v2pub.update_contact_point</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>复制工艺路线</td>
+<td>API</td>
+<td>bom_copy_routing.copy_routing</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>创建工艺路线</td>
+<td>API</td>
+<td>bom_rtg_pub.process_rtg</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>创建物料清单</td>
+<td>API</td>
+<td>BOM_BO_PUB.PROCESS_BOM</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>流式工艺路线绘图</td>
+<td>API</td>
+<td>bom_op_network_util.perform_writes</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>创建ECO</td>
+<td>API</td>
+<td>Eng_Eco_PUB.Process_Eco</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>物料清单展开</td>
+<td>API</td>
+<td>bompexpl.exploder_userexit</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>物料成本导入/更新</td>
+<td>INTERFACE</td>
+<td>BOM.CSTPCIMP</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>物料清单导入/更新</td>
+<td>INTERFACE</td>
+<td>BOM.BMCOIN</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>工艺路线导入/更新</td>
+<td>INTERFACE</td>
+<td>BOM.BMCOIN</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>ECO导入</td>
+<td>INTERFACE</td>
+<td>BOM.ENGCHGIMP</td>
+</tr>
+<tr>
+<td>CE</td>
+<td>Bank Statement银行对账单导入</td>
+<td>INTERFACE</td>
+<td>CE.ARPLABIM</td>
+</tr>
+<tr>
+<td>CST</td>
+<td>物料成本导入/更新</td>
+<td>API</td>
+<td>cst_item_cost_import_interface.start_item_cost_import_process</td>
+</tr>
+<tr>
+<td>FND</td>
+<td>获取关键性弹性域组合说明</td>
+<td>API</td>
+<td>fnd_flex_keyval.concatenated_descriptions</td>
+</tr>
+<tr>
+<td>FND</td>
+<td>验证键值弹性域</td>
+<td>API</td>
+<td>fnd_flex_descval.validate_desccols</td>
+</tr>
+<tr>
+<td>FND</td>
+<td>获取币种格式掩码</td>
+<td>API</td>
+<td>fnd_currency.get_format_mask</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>汇率转换</td>
+<td>API</td>
+<td>gl_currency_api.get_rate</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>查询单段帐户组合的描述</td>
+<td>API</td>
+<td>gl_flexfields_pkg.get_description_sql</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>查询完整帐户组合的描述</td>
+<td>API</td>
+<td>gl_flexfields_pkg.get_concat_description</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>币种金额转换</td>
+<td>API</td>
+<td>gl_currency_api.convert_amount</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>日记账导入</td>
+<td>INTERFACE</td>
+<td>SQLGL.GLLEZL</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>创建HR职务</td>
+<td>API</td>
+<td>hr_job_api.create_job</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>更新HR职务分配</td>
+<td>API</td>
+<td>hr_assignment_api.update_emp_asg_criteria</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>创建职位</td>
+<td>API</td>
+<td>hr_position_api.create_position</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>创建雇员</td>
+<td>API</td>
+<td>hr_employee_api.create_employee</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>解雇雇员</td>
+<td>APi</td>
+<td>hr_ex_employee_api.actual_termination_emp</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>创建供应商头/地点付款方法</td>
+<td>API</td>
+<td>iby_disbursement_setup_pub.create_external_payee</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>更行供应商头/地点付款方法</td>
+<td>API</td>
+<td>iby_disbursement_setup_pub.update_external_payee</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>创建银行</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.create_ext_bank</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>更行银行</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.update_ext_bank</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>创建银行分行</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.create_ext_bank_branch</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>更新银行分行</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.update_ext_bank_branch</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>创建银行账户</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.create_ext_bank_acct</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>更新银行账户</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.create_ext_bank_acct</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>检查银行是否存在</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.check_bank_exist</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>检查支行是否存在</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.check_ext_bank_branch_exist</td>
+</tr>
+<tr>
+<td>IBY</td>
+<td>检查银行账户是否存在</td>
+<td>API</td>
+<td>iby_ext_bankacct_pub.check_ext_acct_exist</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料搬运单头</td>
+<td>API</td>
+<td>inv_move_order_pub.create_move_order_header</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建保留</td>
+<td>API</td>
+<td>inv_reservation_form_pkg.create_reservation</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>释放保留</td>
+<td>API</td>
+<td>inv_reservation_form_pkg.delete_reservation</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料</td>
+<td>API</td>
+<td>inv_item_grp.create_item</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>更新物料</td>
+<td>API</td>
+<td>inv_item_grp.update_item</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>物料编码导入/更新</td>
+<td>INTERFACE</td>
+<td>INV.INCOIN</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料类别</td>
+<td>API</td>
+<td>inv_item_category_pub.create_category_assignment</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>更新物料类别</td>
+<td>API</td>
+<td>inv_item_category_pub.update_category_assignment</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>物料类别分配导入</td>
+<td>INTERFACE</td>
+<td>INV.INV_ITEM_CAT_ASSIGN_OI</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料目录</td>
+<td>API</td>
+<td>inv_item_catalog_elem_pub.process_item_descr_elements</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料默认子库</td>
+<td>API</td>
+<td>inv_item_sub_default_pkg.insert_upd_item_sub_defaults</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料交叉参考</td>
+<td>API</td>
+<td>mtl_cross_references_pub.process_xref</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建批次</td>
+<td>API</td>
+<td>inv_lot_api_pub.create_inv_lot</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>更新批次状态</td>
+<td>API</td>
+<td>inv_material_status_pub.update_status</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>获取现有量</td>
+<td>API</td>
+<td>inv_quantity_tree_pub.query_quantities</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料事务处理</td>
+<td>API</td>
+<td>mtl_online_transaction_pub.process_online</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建现有量（物料事务处理）</td>
+<td>API</td>
+<td>inv_txn_manager_pub.process_transactions</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建现有量（物料事务处理）</td>
+<td>API</td>
+<td>mtl_online_transaction_pub.process_online</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>现有量导入（物料事务处理）</td>
+<td>INTERFACE</td>
+<td>INV.INCTCW</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>物料转移（物料事务处理）</td>
+<td>INTERFACE</td>
+<td>INV.INCTCW</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>物料事务处理：PO接收</td>
+<td>INTERFACE</td>
+<td>PO.RCVTPO</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>工单完工入库</td>
+<td>API</td>
+<td>inv_txn_manager_pub.process_transactions</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>获取物料单位转换率</td>
+<td>API</td>
+<td>inv_convert.inv_um_conversion</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>获取公司间开票转移价格</td>
+<td>API</td>
+<td>mtl_intercompany_invoices.get_transfer_price</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>修改处理物料搬运单的分配数量函数</td>
+<td>API</td>
+<td>INV_TO_FORM_TROLIN.VALIDATE_AND_WRITE</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>处理物料搬运单</td>
+<td>API</td>
+<td>inv_pick_wave_pick_confirm_pub.pick_confirm</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>得到物料搬运单行的相关信息</td>
+<td>API</td>
+<td>inv_mo_line_detail_util.query_row</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建物料搬运单行</td>
+<td>API</td>
+<td>inv_move_order_pub.create_move_order_lines</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>为物料搬运单生成分配(也可以顺带处理物料搬运单)</td>
+<td>API</td>
+<td>inv_replenish_detail_pub.line_details_pub 产生的分配记录位于以下两张表，其中批次表可以删除后自己添加记录以改变出货批次： mtl_material_transactions_tem mtl_transaction_lots_temp</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>查询物料搬运单行</td>
+<td>API</td>
+<td>inv_trolin_util.query_rows</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>查询物料搬运单分配</td>
+<td>API</td>
+<td>inv_mo_line_detail_util.query_rows</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建货位</td>
+<td>API</td>
+<td>inv_loc_wms_pub.create_locator</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建CRM资源</td>
+<td>API</td>
+<td>jtf_rs_resource_pub.create_resource</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建销售人员</td>
+<td>API</td>
+<td>jtf_rs_salesreps_pub.create_salesrep</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建CRM资源成员关系</td>
+<td>API</td>
+<td>jtf_rs_grp_membership_pub.create_group_membership</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建CRM资源角色关联</td>
+<td>API</td>
+<td>jtf_rs_role_relate_pub.create_resource_role_relate</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建CRM资源组</td>
+<td>API</td>
+<td>jtf_rs_groups_pub.create_resource_group</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建CRM任务</td>
+<td>API</td>
+<td>jtf_tasks_pub.create_task</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建CRM任务分配</td>
+<td>API</td>
+<td>jtf_tasks_assignments_pub.create_task_assignment</td>
+</tr>
+<tr>
+<td>JTF</td>
+<td>创建CRM任务参照</td>
+<td>API</td>
+<td>jtf_tasks_references_pub.create_references</td>
+</tr>
+<tr>
+<td>MRP</td>
+<td>创建采购规则</td>
+<td>API</td>
+<td>mrp_sourcing_rule_pub.process_sourcing_rule</td>
+</tr>
+<tr>
+<td>MRP</td>
+<td>创建采购规则分配</td>
+<td>API</td>
+<td>mrp_src_assignment_pub.process_assignment</td>
+</tr>
+<tr>
+<td>ONT</td>
+<td>创建发货</td>
+<td>API</td>
+<td>wsh_delivery_details_pub.autocreate_deliveries</td>
+</tr>
+<tr>
+<td>ONT</td>
+<td>订单导入，更新，取消，暂挂</td>
+<td>API</td>
+<td>oe_order_pub.process_order</td>
+</tr>
+<tr>
+<td>ONT</td>
+<td>订单行导入，更新，取消</td>
+<td>API</td>
+<td>OE_ORDER_PUB.PROCESS_LINE</td>
+</tr>
+<tr>
+<td>ONT</td>
+<td>删除订单头</td>
+<td>API</td>
+<td>OE_ORDER_PUB.DELETE_ORDER</td>
+</tr>
+<tr>
+<td>ONT</td>
+<td>删除订单行</td>
+<td>API</td>
+<td>OE_ORDER_PUB.DELETE_LINE</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更新项目成员</td>
+<td>API</td>
+<td>PA_PROJECT_PARTIES_PUB.UPDATE_PROJECT_PARTY</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建项目成员</td>
+<td>API</td>
+<td>PA_PROJECT_PARTIES_PUB.CREATE_PROJECT_PARTY</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建（复制）项目</td>
+<td>API</td>
+<td>PA_PROJECT_CORE1.COPY_PROJECT</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建项目客户</td>
+<td>API</td>
+<td>PA_PROJECTS_MAINT_PVT.CREATE_CUSTOMER</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建（复制）项目周期</td>
+<td>API</td>
+<td>PA_RETENTION_UTIL.COPY_RETENTION_SETUP</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建任务</td>
+<td>API</td>
+<td>PA_PROJECT_PUB.ADD_TASK</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更新任务</td>
+<td>API</td>
+<td>PA_TASK_PVT1.UPDATE_TASK</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建任务分配</td>
+<td>API</td>
+<td>PA_TASK_ASSIGNMENTS_PUB.CREATE_TASK_ASSIGNMENTS</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>删除任务</td>
+<td>API</td>
+<td>PA_PROJECT_PUB.DELETE_TASK</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建项目客户</td>
+<td>API</td>
+<td>PA_CUSTOMERS_CONTACTS_PUB.CREATE_PROJECT_CUSTOMER</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更新项目客户</td>
+<td>API</td>
+<td>PA_CUSTOMERS_CONTACTS_PUB.UPDATE_PROJECT_CUSTOMER</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建项目协议</td>
+<td>API</td>
+<td>PA_AGREEMENT_PUB.CREATE_AGREEMENT</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建协议行</td>
+<td>API</td>
+<td>PA_AGREEMENT_PUB.ADD_FUNDING</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>批量导入任务</td>
+<td>API</td>
+<td>PA_TASK_PUB1.COPY_TASKS_IN_BULK</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更新计划版本</td>
+<td>API</td>
+<td>PA_TASK_PUB1.UPDATE_SCHEDULE_VERSION</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>创建计划版本</td>
+<td>API</td>
+<td>PA_TASK_PUB1.CREATE_SCHEDULE_VERSION</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更新结构状态</td>
+<td>API</td>
+<td>PA_PROJECT_PUB.CHANGE_STRUCTURE_STATUS</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更新版本属性</td>
+<td>API</td>
+<td>PA_PROJECT_STRUCTURE_PUB1.Update_Structure_Version_Attr</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更改项目状态</td>
+<td>API</td>
+<td>PA_PROJECTS_MAINT_PUB.PROJECT_STATUS_CHANGE</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>更新任务状态</td>
+<td>API</td>
+<td>pa_status_pub.update_progress</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>获取WBS最新版本</td>
+<td>API</td>
+<td>pa_project_structure_utils.get_latest_wp_version</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>获取WBS当前版本</td>
+<td>API</td>
+<td>pa_project_structure_utils.get_current_working_ver_id</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>创建autosourcing</td>
+<td>API</td>
+<td>begin PO_AUTOSOURCE_SV.REQIMPORT_SOURCING ( ‘INVENTORY’ , :request_id , :l_multi_dist_flag ) ; END ;</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>关闭订单</td>
+<td>API</td>
+<td>po_actions.close_po</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>一揽子采购协议导入</td>
+<td>INTERFACE</td>
+<td>PO.POXPDOI</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>标准采购订单导入</td>
+<td>INTERFACE</td>
+<td>PO.POXPOPDOI</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>BPA发放取消</td>
+<td>API</td>
+<td>po_document_control_pub.control_document</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>取消标准采购订单</td>
+<td>API</td>
+<td>po_document_control_pub.control_document</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>更新BPA发放</td>
+<td>API</td>
+<td>po_change_api1_s.update_po</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>更新标准采购订单</td>
+<td>API</td>
+<td>po_change_api1_s.update_po</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>PR自动创建PO</td>
+<td>API</td>
+<td>PO_INTERFACE_S.create_documents</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>获取OU本位币</td>
+<td>API</td>
+<td>po_currency_sv.get_functional_currency_code</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>获取两OU本位币汇率</td>
+<td>API</td>
+<td>po_currency_sv.get_cross_ou_rate</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>创建采购申请</td>
+<td>API</td>
+<td>po_create_requisition_sv.process_requisition</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>PO接收/PO退货/RMA接收</td>
+<td>INTERFACE</td>
+<td>PO.RVCTP</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>创建服务请求</td>
+<td>API</td>
+<td>cs_servicerequest_pub.create_servicerequest</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>更新服务请求</td>
+<td>API</td>
+<td>cs_servicerequest_pub.update_servicerequest</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>更新服务请求状态</td>
+<td>API</td>
+<td>cs_servicerequest_pub.update_status</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>更新服务问题编码</td>
+<td>API</td>
+<td>cs_servicerequest_pub.update_problem_code</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>服务任务创建/更新/锁定/删除</td>
+<td>API</td>
+<td>jtf_task_assignments_pub.create_task_assignment jtf_task_assignments_pub.update_task_assignment jtf_task_assignments_pub.lock_task_assignment jtf_task_assignments_pub.delete_task_assignment</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>创建例程</td>
+<td>API</td>
+<td>csi_item_instance_pub.create_item_instance</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>更新例程</td>
+<td>API</td>
+<td>csi_item_instance_pub.update_item_instance</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>终止例程</td>
+<td>API</td>
+<td>csi_item_instance_pub.expire_item_instance</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>复制例程</td>
+<td>API</td>
+<td>csi_item_instance_pub.copy_item_instance</td>
+</tr>
+<tr>
+<td>WIP</td>
+<td>离散任务导入</td>
+<td>INTERFACE</td>
+<td>WIP.WICMLP</td>
+</tr>
+<tr>
+<td>WIP</td>
+<td>离散任务导入</td>
+<td>API</td>
+<td>wip_massload_pub.massloadjobs</td>
+</tr>
+<tr>
+<td>WMS</td>
+<td>LPN重用</td>
+<td>API</td>
+<td>wms_container_pub.reuse_lpns</td>
+</tr>
+<tr>
+<td>WMS</td>
+<td>创建LPN</td>
+<td>API</td>
+<td>inv_rcv_common_apis.create_lpn</td>
+</tr>
+<tr>
+<td>WSH</td>
+<td>为销售订单创建批号</td>
+<td>API</td>
+<td>wsh_picking_batches_pub.create_batch</td>
+</tr>
+<tr>
+<td>WSH</td>
+<td>发放销售订单</td>
+<td>API</td>
+<td>wsh_picking_batches_pub.release_batch</td>
+</tr>
+<tr>
+<td>WSH</td>
+<td>创建交货号</td>
+<td>API</td>
+<td>wsh_delivery_autocreate.autocreate_deliveries</td>
+</tr>
+<tr>
+<td>WSH</td>
+<td>发运确认销售订单</td>
+<td>API</td>
+<td>wsh_deliveries_pub.delivery_action</td>
+</tr>
+<tr>
+<td>XLA</td>
+<td>创建分录</td>
+<td>API</td>
+<td>xla_journal_entries_pub_pkg.create_journal_entry_header xla_journal_entries_pub_pkg.create_journal_entry_line xla_journal_entries_pub_pkg.complete_journal_entry</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>库存客户物料导入</td>
+<td>INTERFACE</td>
+<td>INV.INVCIINT INV.INVCIINTX</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>PO关闭头</td>
+<td>API</td>
+<td>po_action.close_po</td>
+</tr>
+<tr>
+<td>ONT</td>
+<td>获取订单头附属栏位信息</td>
+<td>API</td>
+<td>OE_OE_TOTAL_SUMMARY.ORDER_TOTALS</td>
+</tr>
+<tr>
+<td>FND</td>
+<td>获取关键性弹性域组合ccid</td>
+<td>API</td>
+<td>fnd_flex_ext.get_ccid</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>资产分配</td>
+<td>API</td>
+<td>fa_transfer_pub.do_transfer</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>资产报废</td>
+<td>API</td>
+<td>fa_retirement_pub.do_retirement</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>资产成批新增</td>
+<td>INTERFACE</td>
+<td>fa_mass_additions</td>
+</tr>
+<tr>
+<td>OM</td>
+<td>订单头合计信息</td>
+<td>API</td>
+<td>oe_oe_totals_summary.order_totals(p_header_id =&gt; p_order_header_id, p_subtotal =&gt; l_subtotal, p_discount =&gt; l_discount, p_charges =&gt; l_charges, p_tax =&gt; l_tax);</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>付款创建会计科目</td>
+<td>API</td>
+<td>AP_DRILLDOWN_PUB_PKG.PAYMENT_ONLINE_ACCOUNTING</td>
+</tr>
+<tr>
+<td>XLA</td>
+<td>子模块会计科目传GL</td>
+<td>API</td>
+<td>xla_transfer_pkg.gl_transfer_main</td>
+</tr>
+<tr>
+<td>XLA</td>
+<td>子模块创建会计科目</td>
+<td>API</td>
+<td>XLA_ACCOUNTING_PUB_PKG.accounting_program_document</td>
+</tr>
+<tr>
+<td>FUN</td>
+<td>创建公司间往来事务处理</td>
+<td>API</td>
+<td>fun_trx_pub.CREATE_BATCH</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>杂项事务处理API</td>
+<td>INTERFACE</td>
+<td>mtl_transactions_interface、inv_txn_manager_pub.process_transactions</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>接收事务处理INTERFACE处理器调用</td>
+<td>API</td>
+<td>por_rcv_ord_sv.call_txn_processor</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建‘检验’接收事务处理</td>
+<td>API</td>
+<td>rcv_inspection_grp.Insert_Inspection</td>
+</tr>
+<tr>
+<td>EAM</td>
+<td>资产编号关联仪表信息</td>
+<td>API</td>
+<td>eam_meterassoc_pub.insert_assetmeterassoc</td>
+</tr>
+<tr>
+<td>EAM</td>
+<td>资产编号生成活动信息</td>
+<td>API</td>
+<td>eam_item_activities_pub.insert_item_activities</td>
+</tr>
+<tr>
+<td>EAM</td>
+<td>预防性维护计划创建</td>
+<td>API</td>
+<td>eam_pmdef_pub.create_pm_def</td>
+</tr>
+<tr>
+<td>EAM</td>
+<td>更新资产编号</td>
+<td>API</td>
+<td>eam_assetnumber_pub.Update_Asset_Number</td>
+</tr>
+<tr>
+<td>EAM</td>
+<td>创建资产编号</td>
+<td>API</td>
+<td>eam_assetnumber_pub.Insert_Asset_Number</td>
+</tr>
+<tr>
+<td>EAM</td>
+<td>创建资产属性</td>
+<td>API</td>
+<td>eam_assetattr_value_pub.insert_assetattr_value</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>API方式创建一揽子采购协议</td>
+<td>API</td>
+<td>po_pdoi_grp.start_process</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>API方式创建标准采购订单</td>
+<td>API</td>
+<td>po_docs_interface_sv5.process_po_headers_interface</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>任务发退料</td>
+<td>INTERFACE</td>
+<td>INV.INCTCM</td>
+</tr>
+<tr>
+<td>WIP</td>
+<td>任务工序移动</td>
+<td>INTERFACE</td>
+<td>WIP.WICTMS</td>
+</tr>
+<tr>
+<td>WSH</td>
+<td>撤销交货号</td>
+<td>API</td>
+<td>wsh_delivery_details_actions.unassign_detail_from_delivery</td>
+</tr>
+<tr>
+<td>WSH</td>
+<td>更新发运明细</td>
+<td>API</td>
+<td>wsh_delivery_details_pub.update_shipping_attributes</td>
+</tr>
+<tr>
+<td>FND</td>
+<td>获取并发并请求模板</td>
+<td>API</td>
+<td>fnd_conc_templates.get_template_information</td>
+</tr>
+<tr>
+<td>WIP</td>
+<td>工序移动</td>
+<td>INTERFACE</td>
+<td>WIP.WICTMS</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>导入物料</td>
+<td>API</td>
+<td>ego_item_pub.process_items</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>创建保留</td>
+<td>API</td>
+<td>inv_reservation_pub.create_reservation</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>查找保留</td>
+<td>API</td>
+<td>inv_reservation_pub.query_reservation</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>单位转换</td>
+<td>API</td>
+<td>inv_convert.inv_um_convert</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>更新保留</td>
+<td>API</td>
+<td>inv_reservation_pub.update_reservation</td>
+</tr>
+<tr>
+<td>INV</td>
+<td>删除物料搬运单分配</td>
+<td>API</td>
+<td>inv_mo_line_detail_util.delete_row</td>
+</tr>
+<tr>
+<td>XLA</td>
+<td>创建事件</td>
+<td>API</td>
+<td>xla_events_pub_pkg.create_event</td>
+</tr>
+<tr>
+<td>XLA</td>
+<td>生成分录</td>
+<td>API</td>
+<td>xla_accounting_pub_pkg.accounting_program_document</td>
+</tr>
+<tr>
+<td>XLA</td>
+<td>删除分录</td>
+<td>API</td>
+<td>xla_journal_entries_pkg.delete_journal_entries</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>预算检查</td>
+<td>API</td>
+<td>xla_je_funds_checker_pkg.check_funds</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>预算保留</td>
+<td>API</td>
+<td>xla_je_funds_checker_pkg.reserve_funds</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>获取资产折旧信息</td>
+<td>API</td>
+<td>fa_query_balances_pkg.query_balances</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>资产报废</td>
+<td>API</td>
+<td>fa_retirement_pub.do_retirement</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>资产转移</td>
+<td>API</td>
+<td>fa_transfer_pub.do_transfer</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>接受数量</td>
+<td>API</td>
+<td>rcv_invoice_matching_sv.get_quantities</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>收款冲销</td>
+<td>API</td>
+<td>ar_receipt_api_pub.reverse</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>判断工作日</td>
+<td>API</td>
+<td>bom_calendar_api_bk</td>
+</tr>
+<tr>
+<td>PJM</td>
+<td>创建seiban</td>
+<td>API</td>
+<td>pjm_seiban_pub.create_seiban</td>
+</tr>
+<tr>
+<td>PJM</td>
+<td>更新计划组</td>
+<td>API</td>
+<td>pjm_project_param_pub.update_planning_group</td>
+</tr>
+<tr>
+<td>FND</td>
+<td>设置并发请求对用户隐藏</td>
+<td>API</td>
+<td>fnd_request.set_options</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://dengliantong.cn">Xing Deng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://dengliantong.cn/2023/06/10/Oracle-EBS-R12-%E6%8E%A5%E5%8F%A3%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/">http://dengliantong.cn/2023/06/10/Oracle-EBS-R12-%E6%8E%A5%E5%8F%A3%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://dengliantong.cn" target="_blank">互联网新贵邓醒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/EBS/">EBS</a></div><div class="post_share"><div class="social-share" data-image="https://images3.alphacoders.com/103/103237.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/loading.gif" data-original="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/loading.gif" data-original="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/12/Oracle-EBS-R12-%E9%87%87%E8%B4%AD%E5%88%B0%E5%BA%94%E4%BB%98%E4%BA%A7%E7%94%9F%E7%9A%84%E4%BC%9A%E8%AE%A1%E5%88%86%E5%BD%95/" title="Oracle EBS R12 采购到应付产生的会计分录"><img class="cover" src="/img/loading.gif" data-original="https://images.alphacoders.com/484/484614.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Oracle EBS R12 采购到应付产生的会计分录</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/03/Oracle-EBS-R12-DBA/" title="Oracle EBS R12 DBA"><img class="cover" src="/img/loading.gif" data-original="https://images.alphacoders.com/484/484614.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Oracle EBS R12 DBA</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/12/Oracle-EBS-R12-%E9%87%87%E8%B4%AD%E5%88%B0%E5%BA%94%E4%BB%98%E4%BA%A7%E7%94%9F%E7%9A%84%E4%BC%9A%E8%AE%A1%E5%88%86%E5%BD%95/" title="Oracle EBS R12 采购到应付产生的会计分录"><img class="cover" src="/img/loading.gif" data-original="https://images.alphacoders.com/484/484614.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-12</div><div class="title">Oracle EBS R12 采购到应付产生的会计分录</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xing Deng</div><div class="author-info__description">起风了,唯有努力生存!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/waFroppy"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome To My Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6/" title="微服务框架"><img src="/img/loading.gif" data-original="https://images3.alphacoders.com/103/103237.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微服务框架"/></a><div class="content"><a class="title" href="/2023/09/19/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6/" title="微服务框架">微服务框架</a><time datetime="2023-09-19T11:08:34.000Z" title="发表于 2023-09-19 19:08:34">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Java/" title="Java"><img src="/img/loading.gif" data-original="https://images3.alphacoders.com/103/103237.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java"/></a><div class="content"><a class="title" href="/2023/09/19/Java/" title="Java">Java</a><time datetime="2023-09-19T11:07:59.000Z" title="发表于 2023-09-19 19:07:59">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/JavaWeb/" title="JavaWeb"><img src="/img/loading.gif" data-original="https://images3.alphacoders.com/103/103237.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaWeb"/></a><div class="content"><a class="title" href="/2023/09/19/JavaWeb/" title="JavaWeb">JavaWeb</a><time datetime="2023-09-19T08:34:22.000Z" title="发表于 2023-09-19 16:34:22">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/SSM%E6%A1%86%E6%9E%B6/" title="JavaSSM框架"><img src="/img/loading.gif" data-original="https://images.alphacoders.com/484/484614.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaSSM框架"/></a><div class="content"><a class="title" href="/2023/09/19/SSM%E6%A1%86%E6%9E%B6/" title="JavaSSM框架">JavaSSM框架</a><time datetime="2023-09-19T07:55:40.000Z" title="发表于 2023-09-19 15:55:40">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/12/Oracle-EBS-R12-%E9%87%87%E8%B4%AD%E5%88%B0%E5%BA%94%E4%BB%98%E4%BA%A7%E7%94%9F%E7%9A%84%E4%BC%9A%E8%AE%A1%E5%88%86%E5%BD%95/" title="Oracle EBS R12 采购到应付产生的会计分录"><img src="/img/loading.gif" data-original="https://images.alphacoders.com/484/484614.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Oracle EBS R12 采购到应付产生的会计分录"/></a><div class="content"><a class="title" href="/2023/06/12/Oracle-EBS-R12-%E9%87%87%E8%B4%AD%E5%88%B0%E5%BA%94%E4%BB%98%E4%BA%A7%E7%94%9F%E7%9A%84%E4%BC%9A%E8%AE%A1%E5%88%86%E5%BD%95/" title="Oracle EBS R12 采购到应付产生的会计分录">Oracle EBS R12 采购到应付产生的会计分录</a><time datetime="2023-06-12T00:58:47.000Z" title="发表于 2023-06-12 08:58:47">2023-06-12</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://images3.alphacoders.com/103/103237.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Xing Deng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>
